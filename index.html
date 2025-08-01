@@ -1,1 +1,357 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LeadStrike AI</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at top left, #050d1c, #000000);
+      color: #00ffff;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(0, 255, 255, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #00ffff33;
+      backdrop-filter: blur(4px);
+    }
+
+    header h2 {
+      font-size: 1.5rem;
+      color: #00ffff;
+      text-shadow: 0 0 12px #0ff;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      margin-left: 1.5rem;
+      color: #c5f9ff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #00ffff;
+      text-shadow: 0 0 8px #00ffff;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .hero-text {
+      flex: 1 1 500px;
+      padding: 1rem;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      color: #00ffff;
+      text-shadow: 0 0 20px #00ffff;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: #b0f6ff;
+      margin-bottom: 2rem;
+    }
+
+    .hero-text button {
+      background: transparent;
+      border: 2px solid #00ffff;
+      color: #00ffff;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00ffff;
+      transition: 0.3s ease;
+    }
+
+    .hero-text button:hover {
+      background: #00ffff;
+      color: #000;
+      box-shadow: 0 0 20px #00ffff;
+      transform: translateY(-2px);
+    }
+
+    .hero-image {
+      flex: 1 1 500px;
+      text-align: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 400px;
+      filter: drop-shadow(0 0 15px #00ffff);
+      border-radius: 12px;
+    }
+
+    section {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #00ffff;
+      margin-bottom: 2rem;
+      text-shadow: 0 0 10px #00ffff;
+    }
+
+    .testimonials ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .testimonials li {
+      background: rgba(0, 255, 255, 0.05);
+      border: 1px solid #00ffff33;
+      border-radius: 12px;
+      padding: 1rem;
+      flex: 1 1 300px;
+      list-style: none;
+      box-shadow: 0 0 10px #00ffff22;
+    }
+
+    .features ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      list-style: none;
+    }
+
+    .features li {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1rem;
+      border-radius: 12px;
+      text-shadow: 0 0 4px #00ffffaa;
+    }
+
+    .pricing-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .pricing-card {
+      background: rgba(0, 255, 255, 0.05);
+      border: 1px solid #00ffff33;
+      border-radius: 14px;
+      padding: 2rem;
+      width: 280px;
+      text-align: center;
+      box-shadow: 0 0 20px #00ffff22;
+    }
+
+    .pricing-card p {
+      color: #c0faff;
+      margin: 0.5rem 0;
+    }
+
+    .pricing-card button {
+      margin-top: 1rem;
+      padding: 0.7rem 1.2rem;
+      border-radius: 10px;
+      border: none;
+      font-weight: bold;
+      background: #00ffff;
+      color: #000;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px #00ffff;
+    }
+
+    .pricing-card button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00ffff;
+    }
+
+    .faq details {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      padding: 0.5rem 1rem;
+    }
+
+    .faq summary {
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .faq p {
+      margin-top: 0.5rem;
+      color: #c0faff;
+    }
+
+    .contact input, .contact textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      border: 1px solid #00ffff33;
+      background: rgba(0, 255, 255, 0.02);
+      color: #00ffff;
+    }
+
+    .contact button {
+      background: #00ffff;
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 15px #0ff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: rgba(0, 0, 0, 0.5);
+      font-size: 0.9rem;
+      color: #999;
+      border-top: 1px solid #00ffff22;
+    }
+
+    footer nav a {
+      color: #999;
+      margin: 0 12px;
+      text-decoration: none;
+    }
+
+    footer nav a:hover {
+      color: #00ffff;
+      text-shadow: 0 0 8px #00ffff;
+    }
+
+    @media (max-width: 768px) {
+      .container { flex-direction: column-reverse; text-align: center; }
+      .features ul { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>LEADSTRIKE AI</h2>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="container">
+    <div class="hero-text">
+      <h1>Unlock Verified Business Data Instantly</h1>
+      <p>Get emails, phone numbers, LinkedIn links, websites & more with one smart search. Ask in any language!</p>
+      <button onclick="window.location.href='signup.html'">START FREE</button>
+    </div>
+    <div class="hero-image">
+      <img src="logo.png?text=LeadStrike+AI" alt="LeadStrike AI Logo" />
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <h2>What Our Users Say</h2>
+    <ul>
+      <li>"LeadStrike helped me close 12 clients in 3 days. Just wow!" — Neha S.</li>
+      <li>"Within 10 mins I found verified contacts of 5 Dubai buyers!" — Ahmed K.</li>
+    </ul>
+  </section>
+
+  <section id="features" class="features">
+    <h2>Key Features</h2>
+    <ul>
+      <li>🌐 Multilingual Search — Ask in Hindi, English, Spanish, any language.</li>
+      <li>📊 Smart Results — Get emails, contacts, websites, social profiles instantly.</li>
+      <li>🧠 AI Powered — Understands local terms and context smartly.</li>
+      <li>📁 Excel Export — Download leads in .xlsx format.</li>
+      <li>🔍 Get 50 leads with just 1 credit.</li>
+    </ul>
+  </section>
+
+  <section id="pricing" class="pricing">
+    <h2>Simple Pricing</h2>
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <h3>Weekly Plan</h3>
+        <p>$20/week — 100 credits</p>
+        <p>📥 Excel Downloads</p>
+        <p>🌐 Full Contact Access</p>
+        <p>🚀 Priority Speed</p>
+        <button onclick="window.location.href='pricing.html'">Buy Now</button>
+      </div>
+      <div class="pricing-card">
+        <h3>Monthly Plan</h3>
+        <p>$49/month — 400 credits</p>
+        <p>📥 Excel Downloads</p>
+        <p>🌐 Full Contact Access</p>
+        <p>📊 Live Data Filters</p>
+        <button onclick="window.location.href='pricing.html'">Buy Now</button>
+      </div>
+      <div class="pricing-card">
+        <h3>Yearly Plan</h3>
+        <p>$550/year — 5000 credits</p>
+        <p>🔥 All Pro Features</p>
+        <p>⚡ Fastest Speed + Early Updates</p>
+        <p>🪙 20% Discount vs Monthly</p>
+        <button onclick="window.location.href='pricing.html'">Buy Now</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <h2>FAQ</h2>
+    <details><summary>How accurate is the data?</summary><p>We verify data from multiple trusted sources daily.</p></details>
+    <details><summary>Can I try before buying?</summary><p>Yes, free plan offers 1 credit.</p></details>
+    <details><summary>Is the app multilingual?</summary><p>Absolutely, ask questions in any language.</p></details>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form action="/send-message" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 LeadStrike AI. All rights reserved.</p>
+    <nav>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms of Service</a>
+    </nav>
+  </footer>
+</body>
+</html>
